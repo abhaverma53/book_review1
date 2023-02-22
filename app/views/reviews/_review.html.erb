@@ -1,0 +1,13 @@
+<div class="review">
+	<div class="review-rating" data-score= "<%= review.rating %>"></div>
+	<p class="review-comment"><%= review.comment %></p>
+
+	<% if user_signed_in? %>
+		<%if review.user_id == current_user.id %>
+
+		<%= link_to "Edit",edit_book_review_path(review.book,review) %>
+		<%= link_to 'Destroy',book_review_path(review.book,review), method: :delete , data: {turbo_confirm: :"are you sure?"}%>
+		<%end%>
+	<%end%>
+</div>
+
